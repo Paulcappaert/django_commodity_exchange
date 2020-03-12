@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from .models import Commodity
+from .serializers import CommoditySerializer
+from rest_framework import generics
 
-# Create your views here.
+
+class CommoditiesList(generics.ListCreateAPIView):
+    queryset = Commodity.objects.all()
+    serializer_class = CommoditySerializer

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'channels',
+    'rest_framework',
     'core.apps.CoreConfig',
     'commodities.apps.CommoditiesConfig',
 ]
