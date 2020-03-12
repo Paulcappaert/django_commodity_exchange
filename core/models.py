@@ -5,3 +5,4 @@ class User(AbstractUser):
     email = models.EmailField(blank=True, unique=True)
     mc_username = models.CharField(max_length=100)
     is_confirmed = models.BooleanField(default=False)
+    cash = models.IntegerField(default=0)

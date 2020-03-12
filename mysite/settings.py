@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'channels',
     'core.apps.CoreConfig',
+    'commodities.apps.CommoditiesConfig',
 ]
 
 MIDDLEWARE = [
