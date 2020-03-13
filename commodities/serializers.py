@@ -9,7 +9,7 @@ class CommoditySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_price(self, instance):
-        if Trade.objects.exists():
-            return Trade.objects.order_by('-price').first().price
+        if Trade.objects.filter(commodity=instance).exists():
+            return Trade.objects.filter(commodity=instance).order_by('-price').first().price
         else:
             return None
