@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<section class="basic-grid">
+    {% for commodity in commodities %}
+    <div class="card">
+        <h2>{{commodity.symbol}}</h2>
+        <label for="{{commodity.symbol}}">{{commodity.name}}:</label>
+        <p id="{{commodity.symbol}}">${{commodity.price}}</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock content %}
+
+{% block js %}
+<script>
+
+const chatSocket = new WebSocket(
+    'ws://'
+    + window.location.host
+    + '/ws/price/'
+);
+
+chatSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    $('#' + data['symbol']).text('$' + data['price'])
+};
+
+chatSocket.onclose = function(e) {
+    console.error('Chat socket closed unexpectedly');
+};
+</script>
+{% endblock js %}
